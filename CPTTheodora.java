@@ -60,6 +60,6 @@ public class CPTTheodora{
 				break;
 		}		
 		
-		return intAns;		
-	}
+	
+	}		
 }		
