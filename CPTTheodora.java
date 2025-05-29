@@ -9,9 +9,7 @@ public class CPTTheodora{
 		boolean blnleaderboard = false;
 		boolean blnAddQuiz = false;
 		String Startup = "";
-		
-	
-		
+		 		
 		while(blnstartup == true){
 			Startup = con.readLine();
 			switch(Startup){
@@ -30,8 +28,7 @@ public class CPTTheodora{
 				default:
 					con.println("inavlid");
 			}		
-			//load starting screen
-			if(blnplay == true){
+ 			if(blnplay == true){
 				con.println("name?");
 				String strName = con.readLine();
 				con.println("quiz");
@@ -98,8 +95,6 @@ public class CPTTheodora{
 				blnplay = false; 
 			
 			}
-			
-			//leaderbaord
 			if(blnleaderboard == true){
 				functions.LeaderboardPrint(con);	
 				blnleaderboard = false;
@@ -134,5 +129,6 @@ public class CPTTheodora{
 		}	
 		
 		con.closeWindow();
+	
 	}		
 }		

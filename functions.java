@@ -40,4 +40,5 @@ public class functions{
 				con.println(LeaderBoard[i][0]+"	"+LeaderBoard[i][1]+"	"+LeaderBoard[i][2]);
 			}	
 	}	
+
 }				
