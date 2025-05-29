@@ -1,1 +1,12 @@
-
+theo
+linear.txt
+9
+val
+linear.txt
+2
+stabley
+testing.txt
+1
+josh
+sample2.txt
+0

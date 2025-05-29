@@ -8,10 +8,28 @@ public class CPTTheodora{
 		boolean blnplay = false;
 		boolean blnleaderboard = false;
 		boolean blnAddQuiz = false;
+		String Startup = "";
 		
-
+	
 		
-		if(blnstartup == true){
+		while(blnstartup == true){
+			Startup = con.readLine();
+			switch(Startup){
+				case "play":
+					blnplay = true;
+					break;
+				case "leaderboard":
+					blnleaderboard = true;
+					break;
+				case "add":
+					blnAddQuiz = true;
+					break;
+				case "quit":
+					blnstartup = false;
+					break;
+				default:
+					con.println("inavlid");
+			}		
 			//load starting screen
 			if(blnplay == true){
 				con.println("name?");
@@ -24,6 +42,7 @@ public class CPTTheodora{
 				TextInputFile quiz = new TextInputFile (strQuiz);
 				int intScore = 0;
 				int intcount = 0; 
+				int intQcount = 0;
 				while(!quiz.eof()){
 					String read  = quiz.readLine();
 					intcount++;
@@ -59,12 +78,14 @@ public class CPTTheodora{
 				for (int print = 0; print < intcount; print ++){
 					con.println(QnA[print][0]);
 					String userIn = con.readLine();
+					intQcount ++;
 					for(int ans = 1; ans < 3; ans ++){
 						//System.out.println(QnA[print][ans]);
 						if(QnA[print][ans].equalsIgnoreCase(userIn)){
 							intScore ++;
 						}	
 					}
+					con.println(intScore+ "/" +intQcount); 
 				}	
 				System.out.println(intScore);
 				dply.close();
@@ -74,12 +95,14 @@ public class CPTTheodora{
 				score.println(strQuiz);
 				score.println(intScore);
 				score.close();
+				blnplay = false; 
 			
 			}
 			
 			//leaderbaord
 			if(blnleaderboard == true){
 				functions.LeaderboardPrint(con);	
+				blnleaderboard = false;
 			}		
 			if(blnAddQuiz == true){
 				con.println("What is your quiz name?");
@@ -102,11 +125,14 @@ public class CPTTheodora{
 					con.println("more?");
 					intAddNew = con.readInt();
 				}	
+				if(intAddNew ==0){
+					blnAddQuiz = false;
+				}	
 				
 			}	
 			
-			blnstartup = false;
 		}	
-	
+		
+		con.closeWindow();
 	}		
 }		
