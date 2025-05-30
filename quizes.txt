@@ -2,5 +2,3 @@ expressions
 linear
 quadratics
 geometry
-testing
-sample2

@@ -8,7 +8,7 @@ public class functions{
 		while(ldb.eof() == false){
 			String read  = ldb.readLine();
 			intcount++;
-			System.out.println("leaderboard count =" +intcount);
+			//System.out.println("leaderboard count =" +intcount);
 		}
 		ldb.close();
 			

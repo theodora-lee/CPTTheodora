@@ -10,3 +10,6 @@ testing.txt
 josh
 sample2.txt
 0
+josh
+linear.txt
+5
