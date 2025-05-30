@@ -13,3 +13,6 @@ sample2.txt
 josh
 linear.txt
 5
+ivan
+linear.txt
+10

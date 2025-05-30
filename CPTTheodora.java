@@ -5,41 +5,61 @@ import java.awt.Font;
 
 public class CPTTheodora{
 	public static void main(String[] args){
-		Console con = new Console(1280, 720);
+		Console con = new Console("Math Training Game", 1280, 720);
 		
 		boolean blnstartup = true;
 		boolean blnplay = false;
 		boolean blnleaderboard = false;
 		boolean blnAddQuiz = false;
-		String strStartup = "";
+		char chrStartup;
 		
 		con.setBackgroundColor(new Color(242, 166, 111));
 		 		
 		while(blnstartup == true){
-			strStartup = con.readLine();
+			chrStartup = con.getChar();
 			//switch to get char
-			switch(strStartup){
-				case "play":
+			switch(chrStartup){
+				case 'p':
 					blnplay = true;
 					break;
-				case "leaderboard":
+				case 'l':
 					blnleaderboard = true;
 					break;
-				case "add":
+				case 'a':
 					blnAddQuiz = true;
 					break;
-				case "quit":
+				case 'q':
 					blnstartup = false;
 					break;
 				default:
 					con.println("inavlid");
 			}		
  			if(blnplay == true){
+				String strQzName[];
+				int intQzCount = 0;
 				con.println("name?");
 				String strName = con.readLine();
 				con.println("quiz");
 				//select quiz from quizes.txt
-				String strQuiz = con.readLine();
+				TextInputFile qz = new TextInputFile ("quizes.txt");
+				while(qz.eof()==false){
+					qz.readLine();
+					intQzCount ++;
+				}
+				qz.close();
+				//System.out.println(intQzCount);
+				TextInputFile qzRead = new TextInputFile ("quizes.txt");
+				strQzName = new String[intQzCount];
+				for(int intQzRead = 0 ; intQzRead <= intQzCount-1; intQzRead ++){
+					strQzName[intQzRead] = qzRead.readLine();
+					con.println(intQzRead+" "+ strQzName[intQzRead]);
+				}
+				qzRead.close();
+				char chrChooseMode = con.getChar();
+				int intMode = Character.getNumericValue((chrChooseMode));
+
+				System.out.println(intMode+1 +" "+ strQzName[intMode]);	
+				String strQuiz = strQzName[intMode];
 				strQuiz+=".txt";
 				con.println(strQuiz);
 				System.out.println(strQuiz+"...loading");
