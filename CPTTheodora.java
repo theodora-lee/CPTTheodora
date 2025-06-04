@@ -13,10 +13,54 @@ public class CPTTheodora{
 		boolean blnAddQuiz = false;
 		char chrStartup;
 		
-		con.setBackgroundColor(new Color(242, 166, 111));
 		 		
 		while(blnstartup == true){
+			//UX interface
+			con.setBackgroundColor(new Color(67, 67, 89));
+
+			Font fntTitle = con.loadFont("ProfontwindowsBold-Eaq14.ttf", 90);
+			con.setDrawFont(fntTitle);
+			con.setDrawColor(new Color(255,255,255));
+			con.drawString("Math Trainng Game", 250, 100);	
+			
+			Font fntSub = con.loadFont("ProfontwindowsBold-Eaq14.ttf", 45);
+			
+			con.setDrawColor(Color.WHITE);
+			con.fillRect(325,245,610,100);
+			con.setDrawColor(Color.BLACK);
+			con.fillRect(330,250,620,105);
+			con.setDrawColor(new Color(250, 171, 102));			
+			con.fillRect(330,250,610,95);
+			con.setDrawFont(fntSub);
+			con.setDrawColor(Color.WHITE);
+			con.drawString("Play", 575, 265);
+			
+			con.setDrawColor(Color.WHITE);
+			con.fillRect(325,375,610,100);
+			con.setDrawColor(Color.BLACK);
+			con.fillRect(330,380,620,105);	
+			con.setDrawColor(new Color(67, 67, 89));
+			con.fillRect(330,380,610,95);
+			con.setDrawFont(fntSub);
+			con.setDrawColor(Color.WHITE);
+			con.drawString("Leaderboard", 525, 395);	
+			
+			con.setDrawColor(Color.WHITE);
+			con.fillRect(325,500,610,100);
+			con.setDrawColor(Color.BLACK);
+			con.fillRect(330,505,620,105);
+			con.setDrawColor(new Color(67, 67, 89));
+			con.fillRect(330,505,605,95);
+			con.setDrawFont(fntSub);
+			con.setDrawColor(Color.WHITE);
+			con.drawString("Add Quiz", 550, 520);	
+			con.repaint();
+			
 			chrStartup = con.getChar();
+	
+			
+			
+
 			//switch to get char
 			switch(chrStartup){
 				case 'p':
@@ -32,14 +76,18 @@ public class CPTTheodora{
 					blnstartup = false;
 					break;
 				default:
-					con.println("inavlid");
+					break;
 			}		
+			
  			if(blnplay == true){
+				con.clear();
+				con.setBackgroundColor(new Color(250, 171, 102));	
 				String strQzName[];
 				int intQzCount = 0;
-				con.println("name?");
+				con.setDrawColor(Color.WHITE);
+				con.drawString("Name?", 250, 100);
 				String strName = con.readLine();
-				con.println("quiz");
+				con.clear();
 				//select quiz from quizes.txt
 				TextInputFile qz = new TextInputFile ("quizes.txt");
 				while(qz.eof()==false){
@@ -50,9 +98,14 @@ public class CPTTheodora{
 				//System.out.println(intQzCount);
 				TextInputFile qzRead = new TextInputFile ("quizes.txt");
 				strQzName = new String[intQzCount];
+				con.setBackgroundColor(new Color(250, 171, 102));	
+				con.setDrawColor(Color.WHITE);
+				con.drawString("Quiz Selection", 250, 100);
 				for(int intQzRead = 0 ; intQzRead <= intQzCount-1; intQzRead ++){
 					strQzName[intQzRead] = qzRead.readLine();
-					con.println(intQzRead+" "+ strQzName[intQzRead]);
+					con.setDrawColor(Color.WHITE);
+					con.drawString(intQzRead+" "+ strQzName[intQzRead], 0,(150 +50*intQzRead));
+					con.repaint();
 				}
 				qzRead.close();
 				char chrChooseMode = con.getChar();
@@ -61,12 +114,12 @@ public class CPTTheodora{
 				System.out.println(intMode+1 +" "+ strQzName[intMode]);	
 				String strQuiz = strQzName[intMode];
 				strQuiz+=".txt";
-				con.println(strQuiz);
-				System.out.println(strQuiz+"...loading");
+				con.drawString((strQuiz+"...loading"),640, 450);
 				TextInputFile quiz = new TextInputFile (strQuiz);
 				int intScore = 0;
 				int intcount = 0; 
 				int intQcount = 0;
+				double dblPrecentage = 0; 
 				while(!quiz.eof()){
 					String strread  = quiz.readLine();
 					intcount++;
@@ -100,7 +153,10 @@ public class CPTTheodora{
 				}			
 				
 				for (int intPrint = 0; intPrint < intcount; intPrint ++){
-					con.println(strQnA[intPrint][0]);
+					con.clear();
+					con.setBackgroundColor(new Color(250, 171, 102));	
+					con.setDrawColor(Color.WHITE);
+					con.drawString(strQnA[intPrint][0], 50, 100);
 					String strUserIn = con.readLine();
 					intQcount ++;
 					for(int intAns = 1; intAns < 3; intAns ++){
@@ -109,15 +165,17 @@ public class CPTTheodora{
 							intScore ++;
 						}	
 					}
-					con.println(intScore+ "/" +intQcount); 
+					dblPrecentage = intScore/intQcount; 
+					con.setDrawColor(Color.WHITE);
+					con.drawString((intScore+ "/" +intQcount + "	"+dblPrecentage), 1250, 0); 
 				}	
-				System.out.println(intScore);
+				System.out.println(dblPrecentage);
 				dply.close();
 				
 				TextOutputFile score = new TextOutputFile("leaderboard.txt",true);
 				score.println(strName);
 				score.println(strQuiz);
-				score.println(intScore);
+				score.println(dblPrecentage);
 				score.close();
 				blnplay = false; 
 			
