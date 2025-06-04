@@ -35,3 +35,27 @@ theo
 
 brandon.txt
 0.0
+theo
+
+linear.txt
+0.0
+thegeorge
+
+linear.txt
+0.0
+sigh
+
+linear.txt
+0.0
+george
+
+linear.txt
+0.0
+george
+
+linear.txt
+0.0
+george
+
+linear.txt
+90.9090909090909

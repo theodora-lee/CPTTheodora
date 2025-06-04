@@ -2,10 +2,12 @@ import arc.*;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.Font;
+import java.text.DecimalFormat; 
 
 public class CPTTheodora{
 	public static void main(String[] args){
 		Console con = new Console("Math Training Game", 1280, 720);
+		DecimalFormat df = new DecimalFormat("0.0");
 		
 		boolean blnstartup = true;
 		boolean blnplay = false;
@@ -33,7 +35,7 @@ public class CPTTheodora{
 			con.fillRect(330,250,610,95);
 			con.setDrawFont(fntSub);
 			con.setDrawColor(Color.WHITE);
-			con.drawString("Play", 575, 265);
+			con.drawString("Play (P)", 550, 265);
 			
 			con.setDrawColor(Color.WHITE);
 			con.fillRect(325,375,610,100);
@@ -43,7 +45,7 @@ public class CPTTheodora{
 			con.fillRect(330,380,610,95);
 			con.setDrawFont(fntSub);
 			con.setDrawColor(Color.WHITE);
-			con.drawString("Leaderboard", 525, 395);	
+			con.drawString("Leaderboard (L)", 490, 395);	
 			
 			con.setDrawColor(Color.WHITE);
 			con.fillRect(325,500,610,100);
@@ -53,14 +55,12 @@ public class CPTTheodora{
 			con.fillRect(330,505,605,95);
 			con.setDrawFont(fntSub);
 			con.setDrawColor(Color.WHITE);
-			con.drawString("Add Quiz", 550, 520);	
+			con.drawString("Add Quiz (A)", 505, 520);	
 			con.repaint();
 			
 			chrStartup = con.getChar();
 	
 			
-			
-
 			//switch to get char
 			switch(chrStartup){
 				case 'p':
@@ -78,6 +78,7 @@ public class CPTTheodora{
 				default:
 					continue;
 			}		
+			
 			
  			if(blnplay == true){
 				con.clear();
@@ -121,13 +122,17 @@ public class CPTTheodora{
 					intMode = Character.getNumericValue((chrChooseMode));
 					if(intMode > intQzCount -1){
 						intMode = -1;
-						con.drawString("invalid", 400, 600);
 					}
 				}
+				
 				System.out.println(intMode+1 +" "+ strQzName[intMode]);	
 				String strQuiz = strQzName[intMode];
 				strQuiz+=".txt";
-				con.drawString((strQuiz+"...loading"),640, 450);
+				con.setBackgroundColor(new Color(250, 171, 102));	
+
+				con.setDrawColor(Color.WHITE);
+				con.drawString((strQuiz+"...loading"),250, 250);
+				con.sleep(500);
 				TextInputFile quiz = new TextInputFile (strQuiz);
 				int intScore = 0;
 				int intcount = 0; 
@@ -170,7 +175,20 @@ public class CPTTheodora{
 					con.setBackgroundColor(new Color(250, 171, 102));	
 					con.setDrawColor(Color.WHITE);
 					con.drawString(strQnA[intPrint][0], 50, 100);
-					String strUserIn = con.readLine();
+					
+					String strUserIn = "";
+					chrTyped = 0;
+					
+					while(chrTyped != 10){
+						chrTyped = con.getChar();
+						if (chrTyped != 10){
+							strUserIn += chrTyped;
+							con.drawString(strUserIn, 250, 300);
+							con.repaint();
+						}	
+					}
+					con.clear();			
+					System.out.println(strUserIn);		
 					intQcount ++;
 					for(int intAns = 1; intAns < 3; intAns ++){
 						//System.out.println(QnA[print][ans]);
@@ -178,22 +196,26 @@ public class CPTTheodora{
 							intScore ++;
 						}	
 					}
-					dblPrecentage = intScore/intQcount; 
+					dblPrecentage = 100.0* intScore/intQcount; 
 					con.setDrawColor(Color.WHITE);
-					con.drawString((intScore+ "/" +intQcount + "	"+dblPrecentage), 1250, 0); 
+					System.out.println((intScore+ "/" +intQcount + "	"+df.format(dblPrecentage)+"%")); 
+					con.repaint();
 				}	
-				System.out.println(dblPrecentage);
 				dply.close();
-				
+				con.setDrawColor(Color.WHITE);
+				con.drawString((intScore+ "/" +intQcount + "	"+df.format(dblPrecentage)+"%"), 250, 400); 
+
 				TextOutputFile score = new TextOutputFile("leaderboard.txt",true);
 				score.println(strName);
-				score.println(strQuiz);
+				score.println(strQuiz); 
 				score.println(dblPrecentage);
 				score.close();
 				blnplay = false; 
 			
 			}
 			if(blnleaderboard == true){
+				con.clear();
+				con.setBackgroundColor(new Color(127, 83, 166));
 				functions.LeaderboardPrint(con);	
 				blnleaderboard = false;
 			}		
