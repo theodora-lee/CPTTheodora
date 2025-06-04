@@ -6,11 +6,18 @@ import java.awt.Font;
 public class tryout{
 	public static void main(String[] args){
 		Console con = new Console(1280, 720);
-		Font fntTest = con.loadFont("ProfontwindowsBold-Eaq14.ttf", 40);
-		con.setDrawFont(fntTest);
-		con.setDrawColor(new Color(200,30,30));
-		con.drawString("Math Trainng Game", 0, 0);		
-
+		con.setDrawColor(Color.WHITE);
+		con.drawString("Name?", 250, 100);
+		char chrTyped = 0;
+		String strName = "";
+		while(chrTyped != 10){
+			chrTyped = con.getChar();
+			strName += chrTyped;
+			con.drawString(strName, 250, 300);
+			con.repaint();
+		}
+		con.println(strName);	
+		
 
 
 	}

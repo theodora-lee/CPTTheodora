@@ -76,7 +76,7 @@ public class CPTTheodora{
 					blnstartup = false;
 					break;
 				default:
-					break;
+					continue;
 			}		
 			
  			if(blnplay == true){
@@ -86,7 +86,14 @@ public class CPTTheodora{
 				int intQzCount = 0;
 				con.setDrawColor(Color.WHITE);
 				con.drawString("Name?", 250, 100);
-				String strName = con.readLine();
+				char chrTyped = 0;
+				String strName = "";
+				while(chrTyped != 10){
+					chrTyped = con.getChar();
+					strName += chrTyped;
+					con.drawString(strName, 250, 300);
+					con.repaint();
+				}
 				con.clear();
 				//select quiz from quizes.txt
 				TextInputFile qz = new TextInputFile ("quizes.txt");
@@ -108,9 +115,15 @@ public class CPTTheodora{
 					con.repaint();
 				}
 				qzRead.close();
-				char chrChooseMode = con.getChar();
-				int intMode = Character.getNumericValue((chrChooseMode));
-
+				int intMode = -1;
+				while(intMode == -1){
+					char chrChooseMode = con.getChar();
+					intMode = Character.getNumericValue((chrChooseMode));
+					if(intMode > intQzCount -1){
+						intMode = -1;
+						con.drawString("invalid", 400, 600);
+					}
+				}
 				System.out.println(intMode+1 +" "+ strQzName[intMode]);	
 				String strQuiz = strQzName[intMode];
 				strQuiz+=".txt";
@@ -202,7 +215,7 @@ public class CPTTheodora{
 						String strAnswer = con.readLine();
 						add.println(strAnswer);
 					}	
-					con.println("more?");
+					con.println("more?(0 for No, 1 for yes)");
 					intAddNew = con.readInt();
 				}	
 				if(intAddNew ==0){
