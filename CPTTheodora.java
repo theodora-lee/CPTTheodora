@@ -151,11 +151,14 @@ public class CPTTheodora{
 				System.out.println(intMode+1 +" "+ strQzName[intMode]);	
 				String strQuiz = strQzName[intMode];
 				strQuiz+=".txt";
-				con.setBackgroundColor(new Color(250, 171, 102));	
 
+				con.setBackgroundColor(new Color(250, 171, 102));
 				con.setDrawColor(Color.WHITE);
 				con.drawString((strQuiz+"...loading"),250, 250);
 				con.sleep(500);
+				
+				
+				
 				TextInputFile quiz = new TextInputFile (strQuiz);
 				int intScore = 0;
 				int intcount = 0; 

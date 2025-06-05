@@ -13,3 +13,9 @@ linear.txt
 stannuy
 linear.txt
 60.0
+john sigma
+linear.txt
+77.77777777777777
+trial
+basics.txt
+100.0

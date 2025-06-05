@@ -13,11 +13,11 @@ minus three
 What is the y-intercept of the equation y = 4x + 1
 1
 one
-positive one
++1
 What is the y-intercept of the graph y = -x + 7
 7
 seven
-positive seven
++7
 What is the slope of the horizontal line y = -4
 0
 zero
@@ -26,10 +26,6 @@ What is the slope of the vertical line x = 3
 undefined
 no slope
 not defined
-What is the slope of y = ½x - 8
-0.5
-1/2
-1\2
 What is the y-intercept of y = -5x - 2
 -2
 negative two
@@ -37,4 +33,8 @@ minus two
 What is the slope of a line parallel to y = 3x + 9
 3
 three
-positive three
++3
+What is the slope of the line y = 23x + 1
+23
+twenty three
++3

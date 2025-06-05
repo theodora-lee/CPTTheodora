@@ -1,0 +1,200 @@
+3 * 8
+24
+24
+positive 24
+3 + 9
+12
+12
+positive 12
+10 + 3
+13
+13
+positive 13
+5 - 2
+3
+three
+positive three
+9 - 4
+5
+five
+positive five
+4 - 5
+-1
+negative one
+negative one
+1 + 6
+7
+seven
+positive seven
+4 + 6
+10
+ten
+positive ten
+2 + 9
+11
+11
+positive 11
+8 * 3
+24
+24
+positive 24
+10 * 8
+80
+80
+positive 80
+6 + 5
+11
+11
+positive 11
+10 - 3
+7
+seven
+positive seven
+8 - 2
+6
+six
+positive six
+7 + 9
+16
+16
+positive 16
+6 * 9
+54
+54
+positive 54
+2 * 10
+20
+20
+positive 20
+1 - 4
+-3
+negative three
+negative three
+2 - 6
+-4
+negative four
+negative four
+8 - 9
+-1
+negative one
+negative one
+3 - 6
+-3
+negative three
+negative three
+3 + 4
+7
+seven
+positive seven
+7 * 3
+21
+21
+positive 21
+9 + 9
+18
+18
+positive 18
+10 + 7
+17
+17
+positive 17
+4 - 3
+1
+one
+positive one
+7 - 6
+1
+one
+positive one
+7 * 8
+56
+56
+positive 56
+9 + 4
+13
+13
+positive 13
+4 * 9
+36
+36
+positive 36
+2 - 1
+1
+one
+positive one
+8 * 4
+32
+32
+positive 32
+5 * 2
+10
+ten
+positive ten
+5 / 5
+1
+one
+positive one
+6 + 4
+10
+ten
+positive ten
+4 * 9
+36
+36
+positive 36
+9 - 1
+8
+eight
+positive eight
+2 * 4
+8
+eight
+positive eight
+1 * 5
+5
+five
+positive five
+9 - 1
+8
+eight
+positive eight
+8 * 10
+80
+80
+positive 80
+10 * 10
+100
+100
+positive 100
+10 / 1
+10
+ten
+positive ten
+8 - 10
+-2
+negative two
+negative two
+4 - 3
+1
+one
+positive one
+5 * 7
+35
+35
+positive 35
+7 * 9
+63
+63
+positive 63
+4 - 9
+-5
+negative five
+negative five
+8 - 5
+3
+three
+positive three
+3 + 1
+4
+four
+positive four
