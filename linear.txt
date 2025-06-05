@@ -5,7 +5,7 @@ positive two
 What is the y int of y = x -6
 -6
 negative six
-minus sixc
+minus six
 What is the slope of the line y = -3x + 5
 -3
 negative three
@@ -14,10 +14,6 @@ What is the y-intercept of the equation y = 4x + 1
 1
 one
 positive one
-What is the slope of the line passing through the points (1, 2) and (3, 6)
-2
-two
-positive two
 What is the y-intercept of the graph y = -x + 7
 7
 seven
@@ -32,8 +28,8 @@ no slope
 not defined
 What is the slope of y = ½x - 8
 0.5
-one half
-positive one-half
+1/2
+1\2
 What is the y-intercept of y = -5x - 2
 -2
 negative two

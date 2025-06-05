@@ -17,6 +17,7 @@ public class CPTTheodora{
 		
 		 		
 		while(blnstartup == true){
+			con.clear();
 			//UX interface
 			con.setBackgroundColor(new Color(67, 67, 89));
 
@@ -81,20 +82,42 @@ public class CPTTheodora{
 			
 			
  			if(blnplay == true){
+				con.setDrawFont(fntSub);
 				con.clear();
 				con.setBackgroundColor(new Color(250, 171, 102));	
 				String strQzName[];
 				int intQzCount = 0;
 				con.setDrawColor(Color.WHITE);
 				con.drawString("Name?", 250, 100);
-				char chrTyped = 0;
+				int intX = 250;
+				int intY = 300;
+				int intCharWidth = 20; 
+				int intMaxLength = 0;
 				String strName = "";
-				while(chrTyped != 10){
+				char chrTyped = 0;
+
+				while (chrTyped != 10) {
 					chrTyped = con.getChar();
-					strName += chrTyped;
-					con.drawString(strName, 250, 300);
+
+					if (chrTyped == 8 && strName.length() > 0) { 
+						strName = strName.substring(0, strName.length() - 1);
+					} else if (chrTyped >= 32 && chrTyped <= 126) { 
+						strName += chrTyped;
+					}
+
+					if (strName.length() > intMaxLength) {
+						intMaxLength = strName.length();
+					}
+
+					con.setDrawColor(new Color(250, 171, 102));
+					con.fillRect(intX, intY + 20, (intMaxLength + 1) * intCharWidth, 50); 
+
+					con.setDrawColor(Color.WHITE);
+					con.drawString(strName , intX, intY);
 					con.repaint();
 				}
+
+				System.out.println(strName);
 				con.clear();
 				//select quiz from quizes.txt
 				TextInputFile qz = new TextInputFile ("quizes.txt");
@@ -175,49 +198,114 @@ public class CPTTheodora{
 					con.setBackgroundColor(new Color(250, 171, 102));	
 					con.setDrawColor(Color.WHITE);
 					con.drawString(strQnA[intPrint][0], 50, 100);
+					con.setDrawColor(Color.WHITE);
+					con.drawString((intScore+ "/" +intQcount), 800, 0);
+					con.drawString((df.format(dblPrecentage)+"%"), 900, 0); 
 					
+					intX = 250;
+					intY = 300;
 					String strUserIn = "";
 					chrTyped = 0;
-					
-					while(chrTyped != 10){
+
+					while (chrTyped != 10) {
 						chrTyped = con.getChar();
-						if (chrTyped != 10){
+
+						if (chrTyped == 8 && strUserIn.length() > 0) { 
+							strUserIn = strUserIn.substring(0, strUserIn.length() - 1);
+						} else if (chrTyped >= 32 && chrTyped <= 126) { 
 							strUserIn += chrTyped;
-							con.drawString(strUserIn, 250, 300);
-							con.repaint();
-						}	
+						}
+
+						if (strUserIn.length() > intMaxLength) {
+							intMaxLength = strUserIn.length();
+						}
+
+						con.setDrawColor(new Color(250, 171, 102));
+						con.fillRect(intX, intY + 20, (intMaxLength + 1) * intCharWidth, 50); 
+
+						con.setDrawColor(Color.WHITE);
+						con.drawString(strUserIn, intX, intY);
+						con.repaint();
 					}
+
 					con.clear();			
 					System.out.println(strUserIn);		
 					intQcount ++;
 					for(int intAns = 1; intAns < 3; intAns ++){
 						//System.out.println(QnA[print][ans]);
-						if(strQnA[intPrint][intAns].equalsIgnoreCase(strUserIn)){
+
+						if(strQnA[intPrint][intAns].equalsIgnoreCase(strUserIn.trim())){
 							intScore ++;
-						}	
+							con.setBackgroundColor(new Color(100, 250, 120));	
+							con.setDrawColor(Color.WHITE);
+							con.drawString("correct", 250, 250);
+							con.sleep(500);
+							con.repaint();
+							break;
+						}else{
+							con.setBackgroundColor(new Color(250, 100, 120));	
+							con.setDrawColor(Color.WHITE);
+							con.drawString("wrong", 250, 250);
+							con.drawString((strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3]), 100,300);
+
+							con.sleep(500);	
+							System.out.println(strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3]);
+							con.repaint();
+							break;
+						}
+						
 					}
 					dblPrecentage = 100.0* intScore/intQcount; 
-					con.setDrawColor(Color.WHITE);
-					System.out.println((intScore+ "/" +intQcount + "	"+df.format(dblPrecentage)+"%")); 
-					con.repaint();
+
 				}	
-				dply.close();
+				con.setBackgroundColor(new Color(250, 171, 102));	
 				con.setDrawColor(Color.WHITE);
-				con.drawString((intScore+ "/" +intQcount + "	"+df.format(dblPrecentage)+"%"), 250, 400); 
+				con.setDrawFont(fntTitle);
+				con.drawString((intScore+ "/" +intQcount), 300, 250);
+				con.drawString((df.format(dblPrecentage)+"%"), 700, 250); 
+				System.out.println((intScore+ "/" +intQcount + "	"+df.format(dblPrecentage)+"%")); 
+				con.repaint();
+				con.setDrawFont(fntSub);
+				dply.close();
+
+				
 
 				TextOutputFile score = new TextOutputFile("leaderboard.txt",true);
 				score.println(strName);
 				score.println(strQuiz); 
 				score.println(dblPrecentage);
 				score.close();
-				blnplay = false; 
+				int intExit = con.getKey();
+				while(intExit != 27){
+					intExit = con.getKey();
+					if(intExit == 27){
+						blnleaderboard = false;
+					}	
+				}	 
 			
 			}
 			if(blnleaderboard == true){
 				con.clear();
 				con.setBackgroundColor(new Color(127, 83, 166));
-				functions.LeaderboardPrint(con);	
-				blnleaderboard = false;
+				String[][] leaderboard = functions.LeaderboardPrint(con);
+				int y = 25;
+				for(int i = 0; i < leaderboard.length; i++){
+					String name = leaderboard[i][0];
+					String quiz = leaderboard[i][1];
+					String score = String.format("%.1f", Double.parseDouble(leaderboard[i][2]));
+					con.setDrawColor(Color.WHITE);
+					System.out.println(name + "    " + quiz + "    " + score);
+					con.drawString((name + "    " + quiz + "    " + score), 50, y);
+					y += 50;
+					con.repaint();
+				}	
+				int intExit = con.getKey();
+				while(intExit != 27){
+					intExit = con.getKey();
+					if(intExit == 27){
+						blnleaderboard = false;
+					}	
+				}	
 			}		
 			if(blnAddQuiz == true){
 				con.println("What is your quiz name?");
@@ -241,6 +329,7 @@ public class CPTTheodora{
 					intAddNew = con.readInt();
 				}	
 				if(intAddNew ==0){
+					con.clear();
 					blnAddQuiz = false;
 				}	
 				

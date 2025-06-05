@@ -5,8 +5,8 @@ import java.awt.Font;
 
 public class tryout{
 	public static void main(String[] args){
-		Console con = new Console(1280, 720);
-		functions.LeaderboardPrint(con);	
+		Console con = new Console();
+		functions.Leaderboard(con);
 
 	}
 }		

@@ -1,8 +1,10 @@
 import arc.*;
+import java.awt.Color;
+
 
 public class functions{
 
-	public static void LeaderboardPrint(Console con){
+	public static String[][] LeaderboardPrint(Console con){
 		int intcount = 0;	
 		TextInputFile ldb = new TextInputFile("leaderboard.txt");
 		while(ldb.eof() == false){
@@ -28,7 +30,7 @@ public class functions{
 			String strScoreTemp;
 			for(int ii = 0; ii < intLeaderBoardCount-1; ii ++){
 				for(int i = 0; i < intLeaderBoardCount-1; i ++){
-					if(Integer.parseInt(LeaderBoard[i][2])<Integer.parseInt(LeaderBoard[i+1][2])){
+					if(Double.parseDouble(LeaderBoard[i][2])<Double.parseDouble(LeaderBoard[i+1][2])){
 						String[] temp = new String[intLeaderBoardCount];
 						temp = LeaderBoard[i];
 						LeaderBoard[i] = LeaderBoard[i+1];
@@ -36,9 +38,7 @@ public class functions{
 					}	
 				}
 			}
-			for(int i = 0; i <intLeaderBoardCount; i ++){
-				con.println(LeaderBoard[i][0]+"	"+LeaderBoard[i][1]+"	"+LeaderBoard[i][2]);
-			}	
+			return LeaderBoard; 
 	}	
 
 }				
