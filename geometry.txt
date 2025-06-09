@@ -1,0 +1,40 @@
+How many sides does a triangle have?
+3
+three
++3
+How many sides does a square have?
+4
+four
++4
+How many sides does a hexagon have?
+6
+six
++6
+How many sides does a pentagon have?
+5
+five
++5
+How many angles in a triangle?
+3
+three
++3
+How many sides does a rectangle have?
+4
+four
++4
+How many sides does an octagon have?
+8
+eight
++8
+How many corners does a square have?
+4
+four
++4
+How many sides does a circle have?
+0
+zero
++0
+How many sides does a decagon have?
+10
+ten
++10

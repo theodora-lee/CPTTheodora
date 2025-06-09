@@ -5,6 +5,7 @@ import java.awt.Color;
 public class functions{
 
 	public static String[][] LeaderboardPrint(Console con){
+		//leaderboard sort
 		int intcount = 0;	
 		TextInputFile ldb = new TextInputFile("leaderboard.txt");
 		while(ldb.eof() == false){
@@ -40,6 +41,27 @@ public class functions{
 			}
 			return LeaderBoard;
 	}	
-	
+	public static void drawWrappedText(Console con, String text, int x, int y, int maxWidth, int lineHeight, int charWidth) {
+		String[] words = text.split(" ");
+		String line = "";
+		int yOffset = 0;
+
+		for (int i = 0; i < words.length; i++) {
+			String testLine = line + words[i] + " ";
+			int lineLengthInPixels = testLine.length() * charWidth;
+
+			if (lineLengthInPixels > maxWidth) {
+				con.drawString(line, x, y + yOffset);
+				yOffset += lineHeight;
+				line = words[i] + " ";
+			} else {
+				line = testLine;
+			}
+		}
+
+		if (!line.equals("")) {
+			con.drawString(line, x, y + yOffset);
+		}
+	}
 
 }				
