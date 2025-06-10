@@ -37,3 +37,9 @@ PlaceValue.txt
 name
 SkipCounting.txt
 100.0
+joshua
+adding.txt
+100.0
+random
+test.txt.txt
+100.0
