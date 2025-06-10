@@ -34,3 +34,6 @@ basics.txt
 joshua
 PlaceValue.txt
 100.0
+name
+SkipCounting.txt
+100.0

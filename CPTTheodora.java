@@ -80,9 +80,6 @@ public class CPTTheodora{
 				case 'q':
 					blnstartup = false;
 					break;
-				case 'h':
-					blnHelp = true;
-					break;
 				case 's':
 					blnSecret = true;
 					break;
@@ -90,19 +87,7 @@ public class CPTTheodora{
 					continue;
 			}		
 			
-			if(blnHelp == true){
-				boolean blnTutorial = true;
-				int intPage = 1;
-				int intTotal = 10;
-				con.setDrawColor(Color.WHITE);
-				con.drawString("help page", 0, 0);
-				con.repaint();
-				while(blnTutorial == true){				
-					int intKey = con.getKey();
-					con.setDrawColor(Color.WHITE);
-					con.drawString("page"+intPage, 250, 250);
-				}	
-			}	
+			
 			
 			if(blnSecret == true){
 				con.setBackgroundColor(new Color(102, 168, 250));
@@ -149,7 +134,7 @@ public class CPTTheodora{
 					}
 
 					con.setDrawColor(new Color(250, 171, 102));
-					con.fillRect(intX, intY + 20, (intMaxLength + 1) * intCharWidth, 50); 
+					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
 					//draw over the deleted letters
 
 					con.setDrawColor(Color.WHITE);
@@ -259,7 +244,7 @@ public class CPTTheodora{
 					con.drawString((intScore+ "/" +intQcount), 900, 0);
 					con.drawString((df.format(dblPrecentage)+"%"), 1100, 0); 
 					con.repaint();
-					if(strName.equalsIgnoreCase("jpxfrd")){
+					if(strName.trim().equalsIgnoreCase("jpxfrd")){
 						con.setDrawColor(Color.WHITE);
 						con.setDrawFont(fntSmall);
 						con.drawString(strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3],0,650);
@@ -456,7 +441,7 @@ public class CPTTheodora{
 					}
 
 					con.setDrawColor(Color.WHITE);
-					con.fillRect(intX, intY + 20, (intMaxLength + 1) * intCharWidth, 50); 
+					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
 					//draw over the deleted letters
 
 					con.setDrawColor(Color.BLACK);
@@ -476,7 +461,7 @@ public class CPTTheodora{
 					con.drawString("Question:", 200, 100);
 					intX = 250;
 					intY = 300;
-					intCharWidth = 20; 
+					intCharWidth = 40; 
 					intMaxLength = 0;
 					String strQuestion = "";
 					chrTyped = 0;
@@ -496,7 +481,7 @@ public class CPTTheodora{
 						}
 
 						con.setDrawColor(Color.WHITE);
-						con.fillRect(intX, intY + 20, (intMaxLength + 1) * intCharWidth, 50); 
+						con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 900); 
 						//draw over the deleted letters
 						con.setDrawColor(Color.BLACK);
 						//combining the next line code and the draw user input code together ... ish
@@ -534,7 +519,8 @@ public class CPTTheodora{
 							}
 
 							con.setDrawColor(Color.WHITE);
-							con.fillRect(intX, intY + 20, (intMaxLength + 1) * intCharWidth, 50); 
+							con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
+							con.clear();
 							//draw over the deleted letters
 							con.setDrawColor(Color.BLACK);
 							functions.drawWrappedText(con, strAnswer , intX, intY, 800, 50, 20);
