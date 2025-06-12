@@ -2,4 +2,3 @@ basics
 linear
 geometry
 PlaceValue
-sample

@@ -97,3 +97,6 @@ sample.txt
 jpxfrd
 sample.txt
 100.0
+ivan
+PlaceValue.txt
+70.0

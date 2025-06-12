@@ -323,7 +323,7 @@ public class CPTTheodora{
 							inty[i] = (int)(Math.random()*-720);
 							intRandColor[i] = new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
 						}
-						for(int intFrames = 0; intFrames < 60; intFrames ++){
+						for(int intFrames = 0; intFrames < 45; intFrames ++){
 							//reset bg
 							con.setBackgroundColor(new Color(100, 250, 120));	
 							con.setDrawColor(Color.WHITE);
@@ -333,7 +333,7 @@ public class CPTTheodora{
 							for (int i = 0; i < 50; i ++){
 								con.setDrawColor(intRandColor[i]);
 								con.fillRect(intx[i], inty [i], 7, 8);
-								inty [i] +=(int)(Math.random()*100);
+								inty [i] +=(int)(Math.random()*50);
 								
 								if(inty[i]> 720){
 									intx[i] = (int)(Math.random()*1280);
@@ -342,20 +342,20 @@ public class CPTTheodora{
 								}
 							}
 							con.repaint();
-							con.sleep(50);
+							con.sleep(25);
 						}	
 
 
 						
 					}else{
-						System.out.println("WRONG! The correct answer was"+ strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3]); 
+						System.out.println("WRONG! The correct answer was "+ strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3]); 
 						con.setBackgroundColor(new Color(250, 100, 120));	
 						con.setDrawColor(Color.WHITE);
 						con.setDrawFont(fntTitle);
 						con.drawString("wrong", 250, 250);
 						con.setDrawFont(fntSub);
 						con.drawString((strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3]), 100,500);
-						con.sleep(500);	
+						con.sleep(600);	
 						//System.out.println(strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3]);
 						con.repaint();
 							
@@ -408,7 +408,7 @@ public class CPTTheodora{
 				String[][] leaderboard = functions.LeaderboardPrint(con);
 				int intTotal = (int)Math.ceil((double)leaderboard.length/9);
 				System.out.println("Leaderboard Loaded");
-				System.out.println("There are" +intTotal+ "pages of the leaderboard");
+				System.out.println("There are "+intTotal+" pages of the leaderboard");
 				
 				int intPage = 0;
 				boolean blnView = true;
