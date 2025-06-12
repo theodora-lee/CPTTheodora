@@ -122,7 +122,7 @@ public class CPTTheodora{
 				con.drawString("Name?", 250, 100);
 				int intX = 250;
 				int intY = 300;
-				int intCharWidth = 20; 
+				int intCharWidth = 45; 
 				int intMaxLength = 0;
 				String strName = "";
 				char chrTyped = 0;
@@ -144,7 +144,11 @@ public class CPTTheodora{
 					}
 
 					con.setDrawColor(new Color(250, 171, 102));
+<<<<<<< Updated upstream
 					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
+=======
+					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
+>>>>>>> Stashed changes
 					//draw over the deleted letters
 
 					con.setDrawColor(Color.WHITE);
@@ -283,7 +287,7 @@ public class CPTTheodora{
 						}
 
 						con.setDrawColor(new Color(250, 171, 102));
-						con.fillRect(intX, intY + 20, (intMaxLength + 1) * intCharWidth, 50); 
+						con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
 						//paints over deleted area
 
 						con.setDrawColor(Color.WHITE);
@@ -379,7 +383,11 @@ public class CPTTheodora{
 				while(intExit != 27){
 					intExit = con.getKey();
 					if(intExit == 27){
+<<<<<<< Updated upstream
 						blnplay = false;
+=======
+						blnplay  = false;
+>>>>>>> Stashed changes
 					}	
 				}	 
 			
@@ -476,7 +484,11 @@ public class CPTTheodora{
 					}
 
 					con.setDrawColor(Color.WHITE);
+<<<<<<< Updated upstream
 					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
+=======
+					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
+>>>>>>> Stashed changes
 					//draw over the deleted letters
 
 					con.setDrawColor(Color.BLACK);
@@ -516,7 +528,11 @@ public class CPTTheodora{
 						}
 
 						con.setDrawColor(Color.WHITE);
+<<<<<<< Updated upstream
 						con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 900); 
+=======
+						con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
+>>>>>>> Stashed changes
 						//draw over the deleted letters
 						con.setDrawColor(Color.BLACK);
 						//combining the next line code and the draw user input code together ... ish
@@ -554,8 +570,12 @@ public class CPTTheodora{
 							}
 
 							con.setDrawColor(Color.WHITE);
+<<<<<<< Updated upstream
 							con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
 							con.clear();
+=======
+							con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
+>>>>>>> Stashed changes
 							//draw over the deleted letters
 							con.setDrawColor(Color.BLACK);
 							functions.drawWrappedText(con, strAnswer , intX, intY, 800, 50, 20);
