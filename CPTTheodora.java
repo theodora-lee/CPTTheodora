@@ -1,3 +1,6 @@
+//Math training game
+//Theodora Lee
+//V1.0
 import arc.*;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -90,19 +93,26 @@ public class CPTTheodora{
 			
 			
 			if(blnSecret == true){
+				System.out.println("Secret Menu");
+				BufferedImage imgStare = con.loadImage("stare.jpg");
 				con.setBackgroundColor(new Color(102, 168, 250));
 				con.setDrawColor(Color.WHITE);
 				con.setDrawFont(fntTitle);
-				con.drawString("2 3 5 7 ", 500, 250);
-				con.setDrawFont(fntSub);
-				con.drawString("Prime suspect", 500, 400);
-				con.sleep (750);
+				con.drawString("I have a funny math", 100, 150);
+				con.drawString("joke to make, but", 100, 250);
+				con.drawString("I'm 2^2 to say", 100, 350);
+				//functions.drawWrappedText(con, "I have a funny math joke to make, but I'm 2^2 to say", 100, 150, 1000, 60, 50);
+				con.sleep(500);
+				con.drawImage(imgStare, 800, 350);
+				con.repaint();
+				con.sleep(3000);
 				blnSecret = false;
 				
 			}
 			
  			if(blnplay == true){
 				//play ui design
+				System.out.println("play initalized");
 				con.setDrawFont(fntSub);
 				con.clear();
 				con.setBackgroundColor(new Color(250, 171, 102));	
@@ -180,7 +190,7 @@ public class CPTTheodora{
 				System.out.println(intMode+1 +" "+ strQzName[intMode]);	
 				String strQuiz = strQzName[intMode];
 				strQuiz+=".txt";
-
+			
 				con.setBackgroundColor(new Color(250, 171, 102));
 				con.setDrawColor(Color.WHITE);
 				con.drawString((strQuiz+"...loading"),250, 250);
@@ -293,12 +303,37 @@ public class CPTTheodora{
 					}	
 					if (blnCorrect == true){	
 						intScore ++;
-						con.setBackgroundColor(new Color(100, 250, 120));	
-						con.setDrawColor(Color.WHITE);
-						con.setDrawFont(fntTitle);
-						con.drawString("correct", 250, 250);
-						con.sleep(500);
-						con.repaint();
+						int intConfetti = 50;
+						int[] intx = new int[intConfetti];
+						int[] inty = new int[intConfetti];
+						Color[] intRandColor  = new Color[50];
+						for(int i = 0; i < 50; i++){
+							intx[i] = (int)(Math.random() *1280);
+							inty[i] = (int)(Math.random()*-720);
+							intRandColor[i] = new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+						}
+						for(int intFrames = 0; intFrames < 40; intFrames ++){
+							con.setBackgroundColor(new Color(100, 250, 120));	
+							con.setDrawColor(Color.WHITE);
+							con.setDrawFont(fntTitle);
+							con.drawString("correct", 250, 250);
+							con.clear();
+							for (int i = 0; i < 50; i ++){
+								con.setDrawColor(intRandColor[i]);
+								con.fillRect(intx[i], inty [i], 7, 8);
+								inty [i] +=(int)(Math.random()*50);
+								
+								if(inty[i]> 720){
+									intx[i] = (int)(Math.random()*1280);
+									inty[i] = (int)(Math.random()*-50);
+									intRandColor[i] = new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
+								}
+							}
+							con.repaint();
+							con.sleep(50);
+						}	
+
+
 						
 					}else{
 						con.setBackgroundColor(new Color(250, 100, 120));	
@@ -344,7 +379,7 @@ public class CPTTheodora{
 				while(intExit != 27){
 					intExit = con.getKey();
 					if(intExit == 27){
-						blnleaderboard = false;
+						blnplay = false;
 					}	
 				}	 
 			

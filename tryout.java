@@ -7,7 +7,7 @@ public class tryout{
 	public static void main(String[] args){
 		Console con = new Console();
 		
- int confettiCount = 50;
+		int confettiCount = 50;
         int[] x = new int[confettiCount];
         int[] y = new int[confettiCount];
         Color[] colors = new Color[confettiCount];
@@ -25,7 +25,6 @@ public class tryout{
         }
 
         while (blnConfetti) {
-            con.setBackgroundColor(Color.BLACK);
             con.clear();
 
             for (int i = 0; i < confettiCount; i++) {
