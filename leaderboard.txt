@@ -34,7 +34,6 @@ basics.txt
 joshua
 PlaceValue.txt
 100.0
-<<<<<<< Updated upstream
 name
 SkipCounting.txt
 100.0
@@ -66,16 +65,14 @@ placeholder
 PlaceValue.txt
 0.0
 george
-=======
+linear.txt
+100.0
 jpxfrd
->>>>>>> Stashed changes
 linear.txt
 100.0
 jpxfrd
 adding.txt
 100.0
-<<<<<<< Updated upstream
-=======
 jpxfrd
 adding.txt
 100.0
@@ -85,4 +82,18 @@ adding.txt
 jpxfrd
 adding.txt
 0.0
->>>>>>> Stashed changes
+jpxfrd
+PlaceValue.txt
+90.0
+jpxfrd
+PlaceValue.txt
+100.0
+jpxfrd
+PlaceValue.txt
+100.0
+jpxfrd
+sample.txt
+100.0
+jpxfrd
+sample.txt
+100.0

@@ -13,15 +13,15 @@ public class CPTTheodora{
 		DecimalFormat df = new DecimalFormat("0.0");
 		
 		boolean blnstartup = true;
-		boolean blnplay = false;
-		boolean blnleaderboard = false;
-		boolean blnAddQuiz = false;
-		boolean blnSecret = false;
-		boolean blnHelp = false;
 		char chrStartup;
 		
 		 		
 		while(blnstartup == true){
+			boolean blnplay = false;
+			boolean blnleaderboard = false;
+			boolean blnAddQuiz = false;
+			boolean blnSecret = false;
+			boolean blnHelp = false;
 			con.clear();
 			//UX interface
 			con.setBackgroundColor(new Color(67, 67, 89));
@@ -93,7 +93,7 @@ public class CPTTheodora{
 			
 			
 			if(blnSecret == true){
-				System.out.println("Secret Menu");
+				System.out.println("Secret Menu Opened");
 				BufferedImage imgStare = con.loadImage("stare.jpg");
 				con.setBackgroundColor(new Color(102, 168, 250));
 				con.setDrawColor(Color.WHITE);
@@ -144,11 +144,8 @@ public class CPTTheodora{
 					}
 
 					con.setDrawColor(new Color(250, 171, 102));
-<<<<<<< Updated upstream
 					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
-=======
 					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
->>>>>>> Stashed changes
 					//draw over the deleted letters
 
 					con.setDrawColor(Color.WHITE);
@@ -156,7 +153,7 @@ public class CPTTheodora{
 					con.repaint();
 				}
 
-				//System.out.println(strName);
+				System.out.println("Username:"+strName);
 				con.clear();
 				//select quiz from quizes.txt
 				TextInputFile qz = new TextInputFile ("quizes.txt");
@@ -191,7 +188,7 @@ public class CPTTheodora{
 					}
 				}
 				
-				System.out.println(intMode+1 +" "+ strQzName[intMode]);	
+				System.out.println(intMode +" "+ strQzName[intMode]+"initalized");	
 				String strQuiz = strQzName[intMode];
 				strQuiz+=".txt";
 			
@@ -215,7 +212,7 @@ public class CPTTheodora{
 				}
 				//takes only the question
 				intcount = intcount/4;
-				System.out.println("There are " +intcount+" questions");
+				System.out.println("This file has " +intcount+" questions");
 				quiz.close();
 				TextInputFile dply = new TextInputFile (strQuiz);
 				String[][] strQnA = new String[intcount][5];
@@ -258,18 +255,22 @@ public class CPTTheodora{
 					con.drawString((intScore+ "/" +intQcount), 900, 0);
 					con.drawString((df.format(dblPrecentage)+"%"), 1100, 0); 
 					con.repaint();
+					
+					//secret nickname function!!!!
 					if(strName.trim().equalsIgnoreCase("jpxfrd")){
-						con.setDrawColor(Color.WHITE);
+						con.setDrawColor(new Color(232, 153, 116));
 						con.setDrawFont(fntSmall);
-						con.drawString(strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3],0,650);
+						con.drawString(strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3],40,650);
 						con.repaint();
 					}	
 					
+					//Input variables
 					intX = 250;
 					intY = 300;
 					String strUserIn = "";
 					chrTyped = 0;
 					con.setDrawFont(fntSub);
+					
 					//takes user input
 					while (chrTyped != 10) {
 						chrTyped = con.getChar();
@@ -297,8 +298,9 @@ public class CPTTheodora{
 
 					con.clear();			
 					intQcount ++;
+					
 					for(int intAns = 1; intAns <= 3; intAns ++){
-						System.out.println("User Input: [" + strUserIn.trim() + "] compared to Answer: [" + strQnA[intPrint][intAns].trim() + "]");
+						//System.out.println("User Input: [" + strUserIn.trim() + "] compared to Answer: [" + strQnA[intPrint][intAns].trim() + "]");
 						//compares answers
 						if(strQnA[intPrint][intAns].trim().equalsIgnoreCase(strUserIn.trim())){
 							System.out.println(strQnA[intPrint][intAns]);
@@ -306,17 +308,23 @@ public class CPTTheodora{
 						}	
 					}	
 					if (blnCorrect == true){	
+						//confetti animation
+						System.out.println("CORRECT! Confetti animation now playing");
+						//confetti varaibles
 						intScore ++;
 						int intConfetti = 50;
 						int[] intx = new int[intConfetti];
 						int[] inty = new int[intConfetti];
 						Color[] intRandColor  = new Color[50];
+						
 						for(int i = 0; i < 50; i++){
+							//random generated position and color
 							intx[i] = (int)(Math.random() *1280);
 							inty[i] = (int)(Math.random()*-720);
 							intRandColor[i] = new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
 						}
-						for(int intFrames = 0; intFrames < 40; intFrames ++){
+						for(int intFrames = 0; intFrames < 60; intFrames ++){
+							//reset bg
 							con.setBackgroundColor(new Color(100, 250, 120));	
 							con.setDrawColor(Color.WHITE);
 							con.setDrawFont(fntTitle);
@@ -325,7 +333,7 @@ public class CPTTheodora{
 							for (int i = 0; i < 50; i ++){
 								con.setDrawColor(intRandColor[i]);
 								con.fillRect(intx[i], inty [i], 7, 8);
-								inty [i] +=(int)(Math.random()*50);
+								inty [i] +=(int)(Math.random()*100);
 								
 								if(inty[i]> 720){
 									intx[i] = (int)(Math.random()*1280);
@@ -340,6 +348,7 @@ public class CPTTheodora{
 
 						
 					}else{
+						System.out.println("WRONG! The correct answer was"+ strQnA[intPrint][1]+"/"+strQnA[intPrint][2]+"/"+strQnA[intPrint][3]); 
 						con.setBackgroundColor(new Color(250, 100, 120));	
 						con.setDrawColor(Color.WHITE);
 						con.setDrawFont(fntTitle);
@@ -357,6 +366,7 @@ public class CPTTheodora{
 
 				}	
 				//final score screen
+				System.out.println("Final Scores Printed to screen");
 
 				con.setBackgroundColor(new Color(250, 171, 102));	
 				con.setDrawColor(Color.WHITE);
@@ -365,9 +375,11 @@ public class CPTTheodora{
 				con.drawString((df.format(dblPrecentage)+"%"), 700, 250); 
 				System.out.println((intScore+ "/" +intQcount + "	"+df.format(dblPrecentage)+"%")); 
 				con.repaint();
+				
 				con.setDrawFont(fntSub);
 				con.drawString((strName +"-"+ strQuiz), 0, 0);
-				con.drawString(("Press Esc to exit"), 900, 0);
+				con.setDrawFont(fntSmall);
+				con.drawString(("Press Esc to exit"), 850, 0);
 
 				dply.close();
 
@@ -383,11 +395,8 @@ public class CPTTheodora{
 				while(intExit != 27){
 					intExit = con.getKey();
 					if(intExit == 27){
-<<<<<<< Updated upstream
 						blnplay = false;
-=======
-						blnplay  = false;
->>>>>>> Stashed changes
+						break;
 					}	
 				}	 
 			
@@ -398,7 +407,8 @@ public class CPTTheodora{
 				//reads the leaderboard and saves into a 2d array
 				String[][] leaderboard = functions.LeaderboardPrint(con);
 				int intTotal = (int)Math.ceil((double)leaderboard.length/9);
-				System.out.println(intTotal);
+				System.out.println("Leaderboard Loaded");
+				System.out.println("There are" +intTotal+ "pages of the leaderboard");
 				
 				int intPage = 0;
 				boolean blnView = true;
@@ -455,6 +465,7 @@ public class CPTTheodora{
 	
 			}		
 			if(blnAddQuiz == true){
+				System.out.println("Add Quiz Initalized");
 				//UI Design
 				con.setBackgroundColor(Color.WHITE);
 				con.setDrawColor(Color.BLACK);
@@ -484,11 +495,8 @@ public class CPTTheodora{
 					}
 
 					con.setDrawColor(Color.WHITE);
-<<<<<<< Updated upstream
 					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
-=======
-					con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
->>>>>>> Stashed changes
+
 					//draw over the deleted letters
 
 					con.setDrawColor(Color.BLACK);
@@ -528,11 +536,8 @@ public class CPTTheodora{
 						}
 
 						con.setDrawColor(Color.WHITE);
-<<<<<<< Updated upstream
 						con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 900); 
-=======
-						con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
->>>>>>> Stashed changes
+
 						//draw over the deleted letters
 						con.setDrawColor(Color.BLACK);
 						//combining the next line code and the draw user input code together ... ish
@@ -570,12 +575,8 @@ public class CPTTheodora{
 							}
 
 							con.setDrawColor(Color.WHITE);
-<<<<<<< Updated upstream
 							con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 200); 
 							con.clear();
-=======
-							con.fillRect(intX, intY - 20, (intMaxLength + 1) * intCharWidth, 120); 
->>>>>>> Stashed changes
 							//draw over the deleted letters
 							con.setDrawColor(Color.BLACK);
 							functions.drawWrappedText(con, strAnswer , intX, intY, 800, 50, 20);
